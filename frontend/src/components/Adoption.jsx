@@ -19,7 +19,9 @@ const Adoption = () => {
             </div>
         </div>
     </div>
-    <ActiveAdopt />
+    <div className='bg-gray-300'>
+      <ActiveAdopt />
+    </div>
     </>
   )
 }

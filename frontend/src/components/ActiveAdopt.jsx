@@ -40,13 +40,13 @@ const ActiveAdopt = () => {
     return (
         <>
             <div className='flex justify-center'>
-                <h3 className='font-semibold text-center text-2xl bg-black text-white border-0 w-56 rounded-3xl p-1'>Active Adoptions</h3>
+                <h3 className='font-semibold text-center text-2xl bg-black text-white border-0 w-56 rounded-3xl p-1 mt-6'>Active Adoptions</h3>
             </div>
             <ErrorMessage message={errorMessage} />
             {loaded && posts ? (
                 <div className="grid grid-cols-4 gap-4 justify-center mx-12 my-12">
                     {posts.map((post) => (
-                        <Card className="w-full " key={post.id}>
+                        <Card className="w-full mb-4" key={post.id}>
                         <CardHeader shadow={false} floated={false} className="h-64">
                           <img
                             src={post.image_url}
@@ -56,17 +56,17 @@ const ActiveAdopt = () => {
                         </CardHeader>
                         <CardBody>
                           <div className="mb-2 flex items-center justify-between">
-                            <Typography color="blue-gray" className="font-medium">
+                            <Typography color="blue-gray" className="font-large font-semibold">
                               {post.first_name}
                             </Typography>
-                            <Typography color="blue-gray" className="font-medium">
-                            Age: {post.age}
+                            <Typography color="blue-gray" className="font-large">
+                            age: {post.age}
                             </Typography>
                           </div>
                           <Typography
                             variant="small"
-                            color="gray"
-                            className="font-normal opacity-75"
+                            color="orange"
+                            className="font-large"
                           >
                             Breed: {post.breed}
 

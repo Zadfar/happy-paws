@@ -6,7 +6,7 @@ const Contact = () => {
     <>
         <section className="bg-white py-12" id='contact-us'>
             <div className="max-w-7xl px-4 mx-20">
-                <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
+                <h2 className="text-3xl font-semibold text-center mb-8">Contact Us</h2>
                 <div className="flex flex-row justify-center">
                     <div className="mr-20">
                         <div className="text-xl font-semibold mb-4">Contact Details</div>

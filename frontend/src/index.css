@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    html {
+      font-family: "Poppins", system-ui, sans-serif;
+    }
+  }
+
 .home {
     background: url("./assets/doggo.jpeg") no-repeat center;
     height: 100vh;

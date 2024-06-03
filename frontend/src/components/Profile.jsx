@@ -86,7 +86,7 @@ const Profile = () => {
         <h1 className="text-2xl">Profile</h1>
         {token && (
           <button 
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
             onClick={handleLogout}
           >
             Logout
@@ -136,17 +136,17 @@ const Profile = () => {
                           </CardHeader>
                           <CardBody>
                             <div className="mb-2 flex items-center justify-between">
-                              <Typography color="blue-gray" className="font-medium">
+                              <Typography color="blue-gray" className="font-large font-semibold">
                                 {post.first_name}
                               </Typography>
-                              <Typography color="blue-gray" className="font-medium">
-                              Age: {post.age}
+                              <Typography color="blue-gray" className="font-large">
+                              age: {post.age}
                               </Typography>
                             </div>
                             <Typography
                               variant="small"
-                              color="gray"
-                              className="font-normal opacity-75"
+                              color="orange"
+                              className="font-normal"
                             >
                               Breed: {post.breed}
                             </Typography>

@@ -14,14 +14,14 @@ const Home = () => {
                 <div className="text-5xl font-bold pb-4">Happy Paws</div>
                 <div className="text-2xl font-semibold">Every pet deserves</div>
                 <div className="text-2xl font-semibold">a loving home</div>
-                <a href="#About" className="inline-block bg-orange-500 text-black text-lg font-normal px-6 py-3 mt-5 rounded-full border-2 border-orange-500 transition duration-300 ease-in-out hover:text-white hover:bg-black">About Us</a>
+                <a href="#About" className="inline-block bg-orange-500 text-black text-lg font-semibold px-6 py-3 mt-5 rounded-full border-2 border-orange-500 transition duration-300 ease-in-out hover:text-white hover:bg-black">About Us</a>
             </div>
         </div>
     </section>
     <section className="bg-white py-12" id="About">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-8">
-                <h2 className="text-3xl font-bold">About Us</h2>
+                <h2 className="text-3xl font-semibold">About Us</h2>
             </div>
             <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/2 md:pr-8">
@@ -36,9 +36,9 @@ const Home = () => {
     </section>
     <section class="bg-white py-12" id="Donate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-8 text-center">Testimonials</h2>
+            <h2 class="text-3xl font-semibold mb-8 text-center">Testimonials</h2>
             <div class="grid grid-cols-3 gap-6">
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md h-72 mt-6">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md h-74 mt-6">
                     <FaQuoteLeft className='text-orange-500' size={20} />
                     <p class="text-lg mt-4">HappyPaws gave me a lot of support and information when I wanted to adopt a puppy. Today Mel has been part of my life for a week and I couldn't be happier.</p>
                     <div class="flex items-center mt-6">
@@ -50,7 +50,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md h-80">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md h-82">
                     <FaQuoteLeft className='text-orange-500' size={20} />
                     <p class="text-lg mt-4">I got to know HappyPaws through the referral of friends. They gave me a lot of support after I decided to adopt Joaquim, at first I didn't know anything about cats, and they helped me a lot.</p>
                     <div class="flex items-center mt-6">
@@ -62,7 +62,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md h-72 mt-6">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md h-74 mt-6">
                     <FaQuoteLeft className='text-orange-500' size={20} />
                     <p class="text-lg mt-4">HappyPaws services are very good, through their help I finally decided to adopt Thor, it was one of the best choices I made, I feel much happier and welcomed.</p>
                     <div class="flex items-center mt-6">
