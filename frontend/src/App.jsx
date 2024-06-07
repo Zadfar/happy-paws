@@ -5,6 +5,7 @@ import Profile from './components/Profile'
 import Adoption from './components/Adoption'
 import Donate from './components/Donate'
 import Footer from './components/Footer'
+import Medical from './components/Medical'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
     {
       path: "/donate",
       element: <><Header /><Donate /><Footer /></>
+    },
+    {
+      path: "/medical",
+      element: <><Header /><Medical /><Footer /></>
     }
   ])
 
