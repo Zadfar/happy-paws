@@ -37,3 +37,20 @@ class post(_postBase):
     date_last_updated: _dt.datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+class Doctor(_pydantic.BaseModel):
+    id: int
+    model_config = ConfigDict(from_attributes=True)
+
+class _appointmentBase(_pydantic.BaseModel):
+    date_of_appointment: _dt.date
+
+class appointmentCreate(_appointmentBase):
+    pass
+
+class appointment(_appointmentBase):
+    id: int
+    user_id: int
+    doctor_id: int
+    date_created: _dt.datetime
+    model_config = ConfigDict(from_attributes=True)

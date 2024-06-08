@@ -123,4 +123,15 @@ async def update_post(
 
 @app.get("/api")
 async def root():
-    return {"message": "awesome posts manager"}
+    return {"message": "Happy paws api test"}
+
+@app.post("/api/appointments", response_model=_schemas.appointment)
+async def create_appointment(
+    appointment: _schemas.appointmentCreate,
+    doctor: _schemas.Doctor,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.create_appointment(user=user, db=db, appointment=appointment, doctor = doctor.id)
+
+

@@ -134,3 +134,15 @@ async def update_post(
     db.refresh(post_db)
 
     return _schemas.post.from_orm(post_db)
+
+async def create_appointment(
+        user: _schemas.User, db: _orm.Session, appointment: _schemas.appointmentCreate, doctor: _schemas.Doctor
+):
+    appointment = _models.appointment(**appointment.model_dump(), user_id=user.id, doctor_id=doctor)
+    db.add(appointment)
+    db.commit()
+    db.refresh(appointment)
+    return _schemas.appointment.model_validate(appointment, from_attributes=True)
+    
+    
+    
