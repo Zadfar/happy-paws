@@ -134,4 +134,15 @@ async def create_appointment(
 ):
     return await _services.create_appointment(user=user, db=db, appointment=appointment, doctor = doctor.id)
 
+@app.get("/api/appointments", response_model=List[_schemas.appointment])
+async def get_appointments(
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_appointments(user=user, db=db)
 
+@app.get("/api/doctors", response_model=List[_schemas.Doctor])
+async def get_doctors(
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_doctors(db=db)

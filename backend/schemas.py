@@ -38,8 +38,13 @@ class post(_postBase):
 
     model_config = ConfigDict(from_attributes=True)
 
-class Doctor(_pydantic.BaseModel):
+class _DoctorBase(_pydantic.BaseModel):
     id: int
+    
+class Doctor(_DoctorBase):
+    name: str
+    area: str
+    description: str
     model_config = ConfigDict(from_attributes=True)
 
 class _appointmentBase(_pydantic.BaseModel):

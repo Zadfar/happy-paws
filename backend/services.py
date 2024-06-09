@@ -89,7 +89,7 @@ async def get_posts(user: _schemas.User, db: _orm.Session):
 async def get_posts_all(db: _orm.Session):
     posts = db.query(_models.post)
 
-    return list(map(_schemas.post.from_orm, posts))
+    return list(map(_schemas.post.from_orm, posts)) 
 
 
 async def _post_selector(post_id: int, user: _schemas.User, db: _orm.Session):
@@ -143,6 +143,16 @@ async def create_appointment(
     db.commit()
     db.refresh(appointment)
     return _schemas.appointment.model_validate(appointment, from_attributes=True)
+
+async def get_appointments(user: _schemas.User, db: _orm.Session):
+    appointments = db.query(_models.appointment).filter_by(user_id=user.id)
+
+    return list(map(_schemas.appointment.from_orm, appointments))
+
+async def get_doctors(db: _orm.Session):
+    doctors = db.query(_models.Doctor)
+
+    return list(map(_schemas.Doctor.from_orm, doctors))
     
     
     

@@ -39,7 +39,7 @@ class Doctor(_database.Base):
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     name = _sql.Column(_sql.String, index=True)
     area = _sql.Column(_sql.String, index=True)
-    note = _sql.Column(_sql.String, default="")
+    description = _sql.Column(_sql.String, default="")
 
     appointments_dr = _orm.relationship("appointment", back_populates="doctor")
 
