@@ -98,7 +98,7 @@ const Profile = () => {
           {!token ? (
             <div className="flex flex-col">
               <div className="flex justify-center">{showLogin ? <Login /> : <Register />}</div>
-              <button onClick={toggleForm} className="w-25">
+              <button onClick={toggleForm} className="mb-4">
                 {showLogin ? 
                 <p className="text-blue-500 hover:text-blue-700">Register an account</p> : <p className="text-blue-500 hover:text-blue-700">Already have an account? - Login</p>
                 }
