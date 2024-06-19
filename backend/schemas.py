@@ -39,16 +39,21 @@ class post(_postBase):
     model_config = ConfigDict(from_attributes=True)
 
 class _DoctorBase(_pydantic.BaseModel):
-    id: int
-    
-class Doctor(_DoctorBase):
     name: str
     area: str
     description: str
+    image_url: str
+
+class DoctorCreate(_DoctorBase):
+    pass
+    
+    
+class Doctor(_DoctorBase):
+    id: int
     model_config = ConfigDict(from_attributes=True)
 
 class _appointmentBase(_pydantic.BaseModel):
-    date_of_appointment: _dt.date
+    date_of_appointment: _dt.datetime
 
 class appointmentCreate(_appointmentBase):
     pass

@@ -136,7 +136,7 @@ async def update_post(
     return _schemas.post.from_orm(post_db)
 
 async def create_appointment(
-        user: _schemas.User, db: _orm.Session, appointment: _schemas.appointmentCreate, doctor: _schemas.Doctor
+        user: _schemas.User, db: _orm.Session, appointment: _schemas.appointment, doctor: _schemas.Doctor
 ):
     appointment = _models.appointment(**appointment.model_dump(), user_id=user.id, doctor_id=doctor)
     db.add(appointment)
@@ -153,6 +153,15 @@ async def get_doctors(db: _orm.Session):
     doctors = db.query(_models.Doctor)
 
     return list(map(_schemas.Doctor.from_orm, doctors))
+
+async def create_doctor(db: _orm.Session, doctor: _schemas.DoctorCreate):
+    doctor = _models.Doctor(**doctor.model_dump())
+    db.add(doctor)
+    db.commit()
+    db.refresh(doctor)
+    return _schemas.Doctor.model_validate(doctor, from_attributes=True)
+
+
     
     
     

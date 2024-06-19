@@ -146,3 +146,26 @@ async def get_doctors(
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
     return await _services.get_doctors(db=db)
+
+@app.post("/api/doctors", response_model=_schemas.Doctor)
+async def create_doctor(
+    name: str = Form(...),
+    area: str = Form(...),
+    description: str = Form(...),
+    file: UploadFile = File(...),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    try:
+        # Upload file to Cloudinary
+        result = upload(file.file)
+        file_url = result["secure_url"]
+
+        doctor_data = _schemas.Doctor(
+            name=name,
+            area=area,
+            description=description,
+            image_url=file_url
+        )
+        return await _services.create_doctor(db=db, doctor=doctor_data)
+    except Exception as e:
+        raise _fastapi.HTTPException(status_code=500, detail=str(e))

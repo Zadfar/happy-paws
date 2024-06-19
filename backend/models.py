@@ -40,6 +40,7 @@ class Doctor(_database.Base):
     name = _sql.Column(_sql.String, index=True)
     area = _sql.Column(_sql.String, index=True)
     description = _sql.Column(_sql.String, default="")
+    image_url = _sql.Column(_sql.String, default="")
 
     appointments_dr = _orm.relationship("appointment", back_populates="doctor")
 
@@ -49,7 +50,7 @@ class appointment(_database.Base):
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     user_id = _sql.Column(_sql.Integer, _sql.ForeignKey("users.id"))
     doctor_id = _sql.Column(_sql.Integer, _sql.ForeignKey("doctors.id"))
-    date_of_appointment = _sql.Column(_sql.Date, default="")
+    date_of_appointment = _sql.Column(_sql.DateTime, default="")
     date_created = _sql.Column(_sql.DateTime, default=_dt.datetime.now)
 
     doctor = _orm.relationship("Doctor", back_populates="appointments_dr")

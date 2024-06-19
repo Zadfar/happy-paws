@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import medicalImg from '../assets/medical.png'
+import Doctors from './Doctors'
+import AppointmentModal from './AppointmentModal';
 
 const Medical = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   return (
     <>
-      <section className='m-4'>
+      <section className='m-4 my-8'>
         <div className='text-center text-3xl'>
             <h1 className='font-semibold'>Book an Appointment for your Pet</h1>
         </div>
@@ -17,6 +28,12 @@ const Medical = () => {
               <img src={medicalImg} alt="Gato" className="mx-auto w-64 rounded about-img" />
             </div>
         </div>
+        <Doctors />
+        <div className='flex justify-center'>
+          <button className='bg-orange-500 text-black text-lg font-normal px-6 py-3 mt-5 rounded-md border-2 border-orange-500 hover:scale-105 transition-transform'
+          onClick={openModal}>Book an Appointment</button>
+        </div>
+        <AppointmentModal isOpen={modalOpen} onClose={closeModal} />
       </section>
     </>
   )

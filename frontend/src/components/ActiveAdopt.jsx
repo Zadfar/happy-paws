@@ -69,7 +69,6 @@ const ActiveAdopt = () => {
                             className="font-large"
                           >
                             Breed: {post.breed}
-
                           </Typography>
                         </CardBody>
                         <CardFooter className="pt-0">

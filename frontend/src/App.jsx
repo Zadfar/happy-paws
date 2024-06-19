@@ -18,7 +18,7 @@ function App() {
       path: "/profile",
       element: <>
       <Header /><Profile />
-      <footer className='flex justify-center bg-black text-white w-full'>
+      <footer className='flex justify-center bg-gray-700 text-white w-full'>
         <span className='py-8'>Created with ❤️ by Team HappyPaws. | 2024 All Rights Reserved.</span>
       </footer>
       </>

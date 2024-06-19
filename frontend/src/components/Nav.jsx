@@ -6,12 +6,12 @@ const Nav = () => {
         <>
         <nav className="w-1/2 text-lg">
         <div className="flex justify-between">
-            <NavLink to="/" className="hover:text-orange-500">Home</NavLink>
-            <NavLink to="/adoption" className="hover:text-orange-500">Adoption</NavLink>
-            <NavLink to="/donate" className="hover:text-orange-500">Donate</NavLink>
-            <NavLink to="/medical" className="hover:text-orange-500">Medical</NavLink>
-            <a href="#contact-us" className="hover:text-orange-500">Contact Us</a>
-            <NavLink to="/profile"><UserCircleIcon className="w-8 text-white hover:text-orange-500" /></NavLink>
+            <NavLink to="/" className="hover:text-orange-500 transition-colors">Home</NavLink>
+            <NavLink to="/adoption" className="hover:text-orange-500 transition-colors">Adoption</NavLink>
+            <NavLink to="/donate" className="hover:text-orange-500 transition-colors">Donate</NavLink>
+            <NavLink to="/medical" className="hover:text-orange-500 transition-colors">Medical</NavLink>
+            <a href="#contact-us" className="hover:text-orange-500 transition-colors">Contact Us</a>
+            <NavLink to="/profile"><UserCircleIcon className="w-8 text-black hover:text-orange-500 transition-colors" /></NavLink>
         </div>
         </nav>
         </>

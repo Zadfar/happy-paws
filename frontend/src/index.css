@@ -9,7 +9,7 @@
   }
 
 .home {
-    background: url("./assets/doggo.jpeg") no-repeat center;
+    background: url("./assets/doggo.jpg") no-repeat center;
     height: 100vh;
     color: rgb(0, 0, 0);
     min-height: 500px;

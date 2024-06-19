@@ -114,17 +114,17 @@ const Profile = () => {
             />
             <div className="flex justify-center">
               <button
-                className="w-64 mb-5 bg-blue-500 text-white rounded-lg px-4 py-2"
+                className="w-64 mb-5 bg-green-500 text-white rounded-lg px-4 py-2"
                 onClick={() => setActiveModal(true)}
               >
                 Create Post
               </button>
             </div>
-            <div className="mx-12">
-              <h2 className="font-semibold text-xl">My Posts</h2>
+            <h2 className="font-semibold text-2xl ml-12 mb-2">My Posts</h2>
+            <div className="px-12 py-2 bg-gray-300">
               <ErrorMessage message={errorMessage} />
               {loaded && posts ? (
-                  <div className="grid grid-cols-4 gap-4 justify-center my-12">
+                  <div className="grid grid-cols-4 gap-4 justify-center my-12 ">
                       {posts.map((post) => (
                           <Card className="w-full card-post" key={post.id}>
                           <CardHeader shadow={false} floated={false} className="h-64">

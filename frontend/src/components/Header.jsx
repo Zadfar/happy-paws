@@ -5,7 +5,7 @@ import Nav from "./Nav"
 
 const Header = () => {
     return (
-        <header className="bg-black sticky top-0 z-[20] mx-auto flex w-full items-center justify-between border-b border-gray-500 p-8 text-white px-24">
+        <header className="bg-white sticky top-0 z-[20] mx-auto flex w-full items-center justify-between drop-shadow-md p-8 text-black px-24">
             <Logo />
             <Nav />
         </header>
