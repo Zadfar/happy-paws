@@ -6,17 +6,19 @@ import Adoption from './components/Adoption'
 import Donate from './components/Donate'
 import Footer from './components/Footer'
 import Medical from './components/Medical'
+import ScrollToTop from './components/ScrolltoTop'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <><Header /><Home /><Footer /></>
+      element: <><ScrollToTop /><Header /><Home /><Footer /></>
     },
     {
       path: "/profile",
       element: <>
+      <ScrollToTop />
       <Header /><Profile />
       <footer className='flex justify-center bg-gray-700 text-white w-full'>
         <span className='py-8'>Created with ❤️ by Team HappyPaws. | 2024 All Rights Reserved.</span>
@@ -25,15 +27,15 @@ function App() {
     },
     {
       path: "/adoption",
-      element: <><Header /><Adoption /><Footer /></>
+      element: <><ScrollToTop /><Header /><Adoption /><Footer /></>
     },
     {
       path: "/donate",
-      element: <><Header /><Donate /><Footer /></>
+      element: <><ScrollToTop /><Header /><Donate /><Footer /></>
     },
     {
       path: "/medical",
-      element: <><Header /><Medical /><Footer /></>
+      element: <><ScrollToTop /><Header /><Medical /><Footer /></>
     }
   ])
 

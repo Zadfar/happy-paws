@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import medicalImg from '../assets/medical.png'
+import medicalImg from '../assets/medical.jpg'
 import Doctors from './Doctors'
 import AppointmentModal from './AppointmentModal';
 

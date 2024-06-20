@@ -56,7 +56,6 @@ const AppointmentModal = ({ isOpen, onClose }) => {
         },
       };
 
-      // Make POST request to create appointment
       const response = await fetch('/api/appointments', {
         method: 'POST',
         headers: {
@@ -72,15 +71,13 @@ const AppointmentModal = ({ isOpen, onClose }) => {
 
       // Appointment created successfully
       console.log('Appointment created successfully');
-      onClose(); // Close the modal
+      onClose();
 
-      // Reset state
       setSelectedDoctor(null);
       setSelectedDate(null);
       setStep(1);
     } catch (error) {
       console.error('Error creating appointment:', error.message);
-      // Handle error state or display error message to user
     }
   };
 
