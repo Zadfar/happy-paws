@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import DatePickerComponent from './DatePicker';
 import { UserContext } from '../context/UserContext';
+import emailjs from '@emailjs/browser';
 
 const AppointmentModal = ({ isOpen, onClose }) => {
-  const [token, setToken] = useContext(UserContext);
+  const [token] = useContext(UserContext);
   const [step, setStep] = useState(1); // 1 for doctors list, 2 for date picking
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [doctors, setDoctors] = useState([]);
+  const [user, setUser] = useState('');
   const [loaded, setLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -28,6 +30,29 @@ const AppointmentModal = ({ isOpen, onClose }) => {
     };
 
     fetchDoctors();
+
+    const fetchUser = async () => {
+      try {
+        const response = await fetch('/api/users/me', {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+        });
+        if (!response.ok) {
+          throw new Error('Failed to fetch user');
+        }
+        const data = await response.json();
+        setUser(data);
+        setLoaded(true);
+      } catch (error) {
+        setErrorMessage(error.message);
+        setLoaded(true);
+      }
+    };
+
+    fetchUser();
   }, []);
 
   const handleNext = () => {
@@ -42,7 +67,6 @@ const AppointmentModal = ({ isOpen, onClose }) => {
         throw new Error('Please select both a doctor and a date');
       }
 
-      // Prepare data for the appointment creation
       const appointmentData = {
         appointment: { 
           date_of_appointment: selectedDate,
@@ -70,7 +94,26 @@ const AppointmentModal = ({ isOpen, onClose }) => {
       }
 
       // Appointment created successfully
-      console.log('Appointment created successfully');
+      const email_params = {
+        to_name: 'User',
+        to_email: user.email,
+        from_name: 'Happy Paws',
+        message: `Appointment has been booked successfully. Date of the appointment: ${selectedDate}`,
+      }
+
+      emailjs
+      .send('service_s4rjuik', 'template_94wfpnk', email_params, {
+        publicKey: 'cKGkVpAxx4RxYjEZt',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+
       onClose();
 
       setSelectedDoctor(null);
