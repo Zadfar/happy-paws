@@ -105,9 +105,20 @@ async def _post_selector(post_id: int, user: _schemas.User, db: _orm.Session):
 
     return post
 
+async def _post_selector_all(post_id: int, db: _orm.Session):
+    post = (
+        db.query(_models.post).filter(_models.post.id == post_id)
+        .first()
+    )
 
-async def get_post(post_id: int, user: _schemas.User, db: _orm.Session):
-    post = await _post_selector(post_id=post_id, user=user, db=db)
+    if post is None:
+        raise _fastapi.HTTPException(status_code=404, detail="post does not exist")
+
+    return post
+
+
+async def get_post(post_id: int, db: _orm.Session):
+    post = await _post_selector_all(post_id=post_id, db=db)
 
     return _schemas.post.from_orm(post)
 

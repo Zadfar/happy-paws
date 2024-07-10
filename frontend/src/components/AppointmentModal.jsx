@@ -12,6 +12,7 @@ const AppointmentModal = ({ isOpen, onClose }) => {
   const [user, setUser] = useState('');
   const [loaded, setLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(''); // New state for success message
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -34,11 +35,11 @@ const AppointmentModal = ({ isOpen, onClose }) => {
     const fetchUser = async () => {
       try {
         const response = await fetch('/api/users/me', {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + token,
-            },
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
         });
         if (!response.ok) {
           throw new Error('Failed to fetch user');
@@ -68,15 +69,15 @@ const AppointmentModal = ({ isOpen, onClose }) => {
       }
 
       const appointmentData = {
-        appointment: { 
+        appointment: {
           date_of_appointment: selectedDate,
         },
         doctor: {
-            name: "string",
-            area: "string",
-            description: "string",
-            image_url: "string",
-            id: selectedDoctor.id,
+          name: "string",
+          area: "string",
+          description: "string",
+          image_url: "string",
+          id: selectedDoctor.id,
         },
       };
 
@@ -102,19 +103,23 @@ const AppointmentModal = ({ isOpen, onClose }) => {
       }
 
       emailjs
-      .send('service_s4rjuik', 'template_94wfpnk', email_params, {
-        publicKey: 'cKGkVpAxx4RxYjEZt',
-      })
-      .then(
-        () => {
-          console.log('SUCCESS!');
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-        },
-      );
+        .send('service_s4rjuik', 'template_94wfpnk', email_params, {
+          publicKey: 'cKGkVpAxx4RxYjEZt',
+        })
+        .then(
+          () => {
+            console.log('SUCCESS!');
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+          },
+        );
 
-      onClose();
+      setSuccessMessage('Appointment is created successfully! Check your Email.'); // Set success message
+      setTimeout(() => {
+        setSuccessMessage('');
+        onClose();
+      }, 3000);
 
       setSelectedDoctor(null);
       setSelectedDate(null);
@@ -136,9 +141,7 @@ const AppointmentModal = ({ isOpen, onClose }) => {
                   {doctors.map(doctor => (
                     <li
                       key={doctor.id}
-                      className={`cursor-pointer p-2 rounded ${
-                        selectedDoctor && selectedDoctor.id === doctor.id ? 'bg-blue-100' : ''
-                      }`}
+                      className={`cursor-pointer p-2 rounded ${selectedDoctor && selectedDoctor.id === doctor.id ? 'bg-blue-100' : ''}`}
                       onClick={() => setSelectedDoctor(doctor)}
                     >
                       {doctor.name}
@@ -161,9 +164,7 @@ const AppointmentModal = ({ isOpen, onClose }) => {
               <button
                 onClick={handleNext}
                 disabled={!selectedDoctor}
-                className={`bg-orange-500 text-black text-lg font-normal px-6 py-3 mr-2 rounded-md border-2 border-orange-500 hover:scale-105 transition-transform ${
-                  !selectedDoctor ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`bg-orange-500 text-black text-lg font-normal px-6 py-3 mr-2 rounded-md border-2 border-orange-500 hover:scale-105 transition-transform ${!selectedDoctor ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Next
               </button>
@@ -172,14 +173,17 @@ const AppointmentModal = ({ isOpen, onClose }) => {
               <button
                 onClick={handleDone}
                 disabled={!selectedDoctor || !selectedDate}
-                className={`bg-green-500 text-white text-lg font-normal px-6 py-3 rounded-md hover:scale-105 transition-transform ${
-                  !selectedDoctor || !selectedDate ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`bg-green-500 text-white text-lg font-normal px-6 py-3 rounded-md hover:scale-105 transition-transform ${!selectedDoctor || !selectedDate ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Done
               </button>
             )}
           </div>
+          {successMessage && (
+            <div className="mt-4 text-green-500 text-center">
+              {successMessage}
+            </div>
+          )}
         </div>
       </div>
     </div>

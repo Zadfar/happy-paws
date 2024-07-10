@@ -24,6 +24,7 @@ class _postBase(_pydantic.BaseModel):
     age: str
     note: str
     image_url : str
+    contact: str
 
 
 class postCreate(_postBase):

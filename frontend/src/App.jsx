@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Medical from './components/Medical'
 import ScrollToTop from './components/ScrolltoTop'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import PetDetails from './components/PetDetails'
 
 function App() {
   const router = createBrowserRouter([
@@ -36,6 +37,10 @@ function App() {
     {
       path: "/medical",
       element: <><ScrollToTop /><Header /><Medical /><Footer /></>
+    },
+    {
+      path: "/adoption/pet/:id",
+      element: <><ScrollToTop /><Header /><PetDetails /><Footer /></>
     }
   ])
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
+import { Link } from "react-router-dom";
 
 import {
     Card,
@@ -72,13 +73,15 @@ const ActiveAdopt = () => {
                           </Typography>
                         </CardBody>
                         <CardFooter className="pt-0">
-                          <Button
-                            ripple={false}
-                            fullWidth={true}
-                            className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-                          >
-                            View Post
-                          </Button>
+                          <Link to={`/adoption/pet/${post.id}`}>
+                            <Button
+                              ripple={false}
+                              fullWidth={true}
+                              className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+                            >
+                              View Post
+                            </Button>
+                          </Link>
                         </CardFooter>
                       </Card>
                     ))}

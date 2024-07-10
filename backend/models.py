@@ -29,6 +29,7 @@ class post(_database.Base):
     age = _sql.Column(_sql.String, index=True, default="")
     note = _sql.Column(_sql.String, default="")
     image_url = _sql.Column(_sql.String, default="")
+    contact = _sql.Column(_sql.String, default="")
     date_created = _sql.Column(_sql.DateTime, default=_dt.datetime.now)
     date_last_updated = _sql.Column(_sql.DateTime, default=_dt.datetime.now)
 

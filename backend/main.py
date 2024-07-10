@@ -55,6 +55,7 @@ async def create_post(
     breed: str = Form(...),
     age: str = Form(...),
     note: str = Form(...),
+    contact: str = Form(...),
     file: UploadFile = File(...),
     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
     db: _orm.Session = _fastapi.Depends(_services.get_db),
@@ -70,6 +71,7 @@ async def create_post(
             breed=breed,
             age=age,
             note=note,
+            contact=contact,
             image_url=file_url
         )
         return await _services.create_post(user=user, db=db, post=post_data)
@@ -95,10 +97,9 @@ async def get_posts_all(
 @app.get("/api/posts/{post_id}", status_code=200)
 async def get_post(
     post_id: int,
-    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
-    return await _services.get_post(post_id, user, db)
+    return await _services.get_post(post_id, db)
 
 
 @app.delete("/api/posts/{post_id}", status_code=204)

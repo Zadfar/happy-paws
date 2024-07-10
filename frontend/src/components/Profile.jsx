@@ -42,8 +42,10 @@ const Profile = () => {
   };
 
   useEffect(() => {
+    if(token) {
     getPosts();
-  }, []);
+    }
+  }, [token]);
 
   const handleLogout = () => {
     setToken(null);
@@ -73,11 +75,6 @@ const Profile = () => {
     setActiveModal(!activeModal);
     getPosts();
     setId(null);
-  };
-
-  const handleUpdate = async (id) => {
-    setId(id);
-    setActiveModal(true);
   };
 
   return (
