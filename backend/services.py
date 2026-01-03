@@ -1,3 +1,4 @@
+import os
 import database as _database, models as _models
 import fastapi as _fastapi
 import fastapi.security as _security
@@ -6,10 +7,13 @@ import schemas as _schemas
 import passlib.hash as _hash
 import jwt as _jwt
 import datetime as _dt
+from dotenv import load_dotenv
+
+load_dotenv()
 
 oauth2schema = _security.OAuth2PasswordBearer(tokenUrl="/api/token")
 
-JWT_SECRET = "myjwtsecret"
+JWT_SECRET = os.getenv("JWT_SECRET")
 
 
 def create_database():

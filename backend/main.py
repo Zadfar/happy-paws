@@ -1,3 +1,4 @@
+import os
 import fastapi as _fastapi
 import fastapi.security as _security
 from typing import List
@@ -5,17 +6,24 @@ from fastapi import File, UploadFile, Form
 
 import cloudinary
 from cloudinary.uploader import upload
+from dotenv import load_dotenv
 
 import sqlalchemy.orm as _orm
 
 import services as _services, schemas as _schemas
 
+load_dotenv()
+
 app = _fastapi.FastAPI()
 
+CLOUD_NAME = os.getenv("CLOUDINARY_NAME")
+API_KEY = os.getenv("CLOUDINARY_API_KEY")
+API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
+
 cloudinary.config(
-    cloud_name="dhmdi4nut",
-    api_key="225271535762999",
-    api_secret="8Tsgw3HdMigQBS0A9BYSqVg3T8k"
+    cloud_name= CLOUD_NAME,
+    api_key=API_KEY,
+    api_secret=API_SECRET
 )
 
 @app.post("/api/users")
